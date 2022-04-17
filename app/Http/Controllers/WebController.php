@@ -131,7 +131,8 @@ class WebController extends Controller
 
     public function uploadInscripciones(){
 
-        ini_set('memory_limit', '8048M');
+        ini_set("memory_limit", "-1");
+        set_time_limit(0);
         
         $inscriptions = array(
             //array('filepath' => 'inscripciones/1999.xlsx'),
