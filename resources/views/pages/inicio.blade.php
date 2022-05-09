@@ -5,7 +5,7 @@
     <div class="row featurette">
         <div class="col-md-12">
             <div class="texto-cotiza">
-              <h2 class="featurette-heading">Búsqueda de <span class="text-muted">Patente</span><i class="bi bi-chevron-right"></i></h2>
+              <h2 class="featurette-heading">Búsquedas de <span class="text-muted">Patente</span><i class="bi bi-chevron-right"></i></h2>
             </div>
         </div>  
 
