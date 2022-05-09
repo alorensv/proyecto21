@@ -201,6 +201,8 @@ class WebController extends Controller
 
     public function uploadRevisiones($path = null){
 
+        echo $path; 
+        
         $revisiones = array(
             array('filepath' => $path)
         );
