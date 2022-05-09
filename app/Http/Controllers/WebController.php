@@ -155,7 +155,7 @@ class WebController extends Controller
             //array('filepath' => 'inscripciones/2016.xlsx'), ok
             //array('filepath' => 'inscripciones/2017.xlsx'), ok          
             //array('filepath' => 'inscripciones/2018.xlsx'), ok
-            array('filepath' => 'inscripciones/20193.xlsx'), 
+            array('filepath' => 'inscripciones/20194.xlsx'), //parte 1,2,3 y 4 carga final ok
         );
 
         foreach($inscriptions as $inscripcion){
