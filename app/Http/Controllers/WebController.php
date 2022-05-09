@@ -159,7 +159,7 @@ class WebController extends Controller
         );
 
         foreach($inscriptions as $inscripcion){
-           $filepath = $inscripcion['filepath']; 
+           echo $filepath = $inscripcion['filepath']; 
            $inputFileType = PHPExcel_IOFactory::identify($filepath);
             $objReader = PHPExcel_IOFactory::createReader($inputFileType);
             $objPHPExcel = $objReader->load($filepath);
