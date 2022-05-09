@@ -199,16 +199,25 @@ class WebController extends Controller
         }
     }
 
-    public function uploadRevisiones($path = null){
+    public function uploadRevisiones(){
 
-        echo $path; 
-        
         $revisiones = array(
-            array('filepath' => $path)
+            array('filepath' => 'revisiones/SGPRT_RA1_ene-2019.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA1_feb-2019.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA1_mar-2019.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA1_abr-2019.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA1_may-2019.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA1_jun-2019.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA1_jul-2019.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA1_ago-2019.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA1_sep-2019.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA1_oct-2019.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA1_nov-2019.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA1_dic-2019.xlsx')
         );
 
         foreach($revisiones as $revision){
-           $filepath = $revision['filepath']; 
+           echo $filepath = $revision['filepath']; 
            $inputFileType = PHPExcel_IOFactory::identify($filepath);
             $objReader = PHPExcel_IOFactory::createReader($inputFileType);
             $objPHPExcel = $objReader->load($filepath);
