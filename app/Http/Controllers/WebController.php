@@ -213,7 +213,19 @@ class WebController extends Controller
             array('filepath' => 'revisiones/SGPRT_RA2_sep-2019.xlsx'),
             array('filepath' => 'revisiones/SGPRT_RA2_oct-2019.xlsx'),
             array('filepath' => 'revisiones/SGPRT_RA2_nov-2019.xlsx'),
-            array('filepath' => 'revisiones/SGPRT_RA2_dic-2019.xlsx')
+            array('filepath' => 'revisiones/SGPRT_RA2_dic-2019.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA2_ene-20192.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA2_feb-20192.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA2_mar-20192.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA2_abr-20192.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA2_may-20192.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA2_jun-20192.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA2_jul-20192.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA2_ago-20192.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA2_sep-20192.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA2_oct-20192.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA2_nov-20192.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA2_dic-20192.xlsx')
         );
 
         foreach($revisiones as $revision){
