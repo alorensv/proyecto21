@@ -1,7 +1,5 @@
 <?php
 
-ini_set('memory_limit', '-1');
-
 /** PHPExcel root directory */
 if (!defined('PHPEXCEL_ROOT')) {
     /**
@@ -304,6 +302,9 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
     private function getFromZipArchive($archive, $fileName = '')
     {
         // Root-relative paths
+
+        ini_set('memory_limit', '-1');
+        
         if (strpos($fileName, '//') !== false) {
             $fileName = substr($fileName, strpos($fileName, '//') + 1);
         }
