@@ -201,6 +201,8 @@ class WebController extends Controller
 
     public function uploadRevisiones(){
 
+        ini_set('memory_limit', '-1');
+
         $revisiones = array(
             array('filepath' => 'revisiones/SGPRT_RA2_ene-2019.xlsx'),
             array('filepath' => 'revisiones/SGPRT_RA2_feb-2019.xlsx'),
