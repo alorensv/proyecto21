@@ -1,5 +1,7 @@
 <?php
 
+ini_set('memory_limit', '-1');
+
 /** PHPExcel root directory */
 if (!defined('PHPEXCEL_ROOT')) {
     /**
