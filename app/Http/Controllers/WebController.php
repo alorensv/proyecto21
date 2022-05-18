@@ -15,13 +15,9 @@ use App\Models\Vehiculo;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Spipu\Html2Pdf\Html2Pdf;
+
 
 use Illuminate\Support\Facades\Storage;
-
-use PHPExcel; 
-use PHPExcel_IOFactory;
-use PHPExcel_Cell;
 
 class WebController extends Controller
 {
@@ -198,14 +194,37 @@ class WebController extends Controller
             echo " total guardadas ".$x."<br>";
         }
     }
+    
 
     public function uploadRevisiones(){
 
-        ini_set('memory_limit', '-1');
+        ini_set("memory_limit", "-1");
+
+        /* $inputFileName = 'revisiones/test.xlsx';
+        $inputFileType = \PhpOffice\PhpSpreadsheet\IOFactory::identify($inputFileName);
+        $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
+        $spreadsheet = $reader->load($inputFileName);
+        $spreadsheet->getActiveSheet()
+            ->setTitle(pathinfo($inputFileName,PATHINFO_BASENAME));
+
+        $spreadsheet->setActiveSheetIndex(0);
+        $sheet = $spreadsheet->getSheet(0);
+        $highestRow = $sheet->getHighestRow(); // Get the total number
+
+        //get data
+        $data = [];
+        for ($i=2; $i <= $highestRow ; $i++) {
+            $cell = [];
+            for ($j=1; $j <= 10 ; $j++) {                    
+                $cell[] = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue();                  
+            }
+            $data[] = $cell;
+        }*/
+ 
 
         $revisiones = array(
             array('filepath' => 'revisiones/SGPRT_RA2_ene-2019.xlsx'),
-            array('filepath' => 'revisiones/SGPRT_RA2_feb-2019.xlsx'),
+            /* array('filepath' => 'revisiones/SGPRT_RA2_feb-2019.xlsx'),
             array('filepath' => 'revisiones/SGPRT_RA2_mar-2019.xlsx'),
             array('filepath' => 'revisiones/SGPRT_RA2_abr-2019.xlsx'),
             array('filepath' => 'revisiones/SGPRT_RA2_may-2019.xlsx'),
@@ -215,9 +234,9 @@ class WebController extends Controller
             array('filepath' => 'revisiones/SGPRT_RA2_sep-2019.xlsx'),
             array('filepath' => 'revisiones/SGPRT_RA2_oct-2019.xlsx'),
             array('filepath' => 'revisiones/SGPRT_RA2_nov-2019.xlsx'),
-            array('filepath' => 'revisiones/SGPRT_RA2_dic-2019.xlsx'),
-            array('filepath' => 'revisiones/SGPRT_RA2_ene-20192.xlsx'),
-            array('filepath' => 'revisiones/SGPRT_RA2_feb-20192.xlsx'),
+            array('filepath' => 'revisiones/SGPRT_RA2_dic-2019.xlsx'), */
+            /*array('filepath' => 'revisiones/SGPRT_RA2_ene-20192.xlsx'),
+             array('filepath' => 'revisiones/SGPRT_RA2_feb-20192.xlsx'),
             array('filepath' => 'revisiones/SGPRT_RA2_mar-20192.xlsx'),
             array('filepath' => 'revisiones/SGPRT_RA2_abr-20192.xlsx'),
             array('filepath' => 'revisiones/SGPRT_RA2_may-20192.xlsx'),
@@ -227,22 +246,22 @@ class WebController extends Controller
             array('filepath' => 'revisiones/SGPRT_RA2_sep-20192.xlsx'),
             array('filepath' => 'revisiones/SGPRT_RA2_oct-20192.xlsx'),
             array('filepath' => 'revisiones/SGPRT_RA2_nov-20192.xlsx'),
-            array('filepath' => 'revisiones/SGPRT_RA2_dic-20192.xlsx')
+            array('filepath' => 'revisiones/SGPRT_RA2_dic-20192.xlsx') */
         );
+        
 
         foreach($revisiones as $revision){
            echo $filepath = $revision['filepath']; 
-           $inputFileType = PHPExcel_IOFactory::identify($filepath);
-            $objReader = PHPExcel_IOFactory::createReader($inputFileType);
-            $objPHPExcel = $objReader->load($filepath);
-            $objReader->setReadDataOnly(true);
-
-            $objPHPExcel->setActiveSheetIndex(0);
-            $sheet = $objPHPExcel->getSheet(0);
-            echo " - ".$highestRow = $sheet->getHighestRow(); // Get the total number
-            
-            //$highestColumn = $sheet ->getHighestColumn();
-            //$highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
+           $inputFileType = \PhpOffice\PhpSpreadsheet\IOFactory::identify($filepath);
+           $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
+           $spreadsheet = $reader->load($filepath);
+           /**  Set the worksheet title (to the filename that we've loaded)  **/
+           $spreadsheet->getActiveSheet()
+               ->setTitle(pathinfo($filepath,PATHINFO_BASENAME));
+   
+           $spreadsheet->setActiveSheetIndex(0);
+           $sheet = $spreadsheet->getSheet(0);
+           $highestRow = $sheet->getHighestRow(); // Get the total number
 
             //get data
             $x=0;
@@ -251,10 +270,10 @@ class WebController extends Controller
                 $cell = [];
                 for ($j=0; $j <= 18 ; $j++) {   
                     if($j == 3 || $j == 4){
-                        $dateValue = $objPHPExcel->getActiveSheet()->getCellByColumnAndRow($j, $i)->getFormattedValue();
+                        $dateValue = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getFormattedValue();
                         $cell[] = date("Y-m-d", strtotime($dateValue));
                     }else{
-                        $cell[] = $objPHPExcel->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue(); 
+                        $cell[] = $spreadsheet->getActiveSheet()->getCellByColumnAndRow($j, $i)->getValue(); 
                     }
                 }
 
